@@ -50,13 +50,19 @@ def download_vcf(id):
         mimetype="text/x-vcard"
     )
 
+from flask import request
+
 @app.route("/generate_qr")
 def generate_qr():
-    url = "https://qr-contact-i48h.onrender.com/contact/1"   # Render URL
-    qr = qrcode.make(url)
-    qr_path = "static/qr.png"
-    qr.save(qr_path)
+    base_url = request.host_url.rstrip("/")
+    url = f"{base_url}/contact/1"
 
-    return send_file(qr_path, mimetype="image/png")
+    qr = qrcode.make(url)
+    qr_io = io.BytesIO()
+    qr.save(qr_io, "PNG")
+    qr_io.seek(0)
+    return send_file(qr_io, mimetype="image/png")
+
+
 
 
