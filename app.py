@@ -52,13 +52,11 @@ def download_vcf(id):
 
 @app.route("/generate_qr")
 def generate_qr():
-    # Make sure URL uses your current LAN IP + port
-    url = "http://192.168.1.12:5000/contact/1"  # CHANGE if your PC IP changed
-    qr_img = qrcode.make(url)
-    buf = io.BytesIO()
-    qr_img.save(buf, format="PNG")
-    buf.seek(0)
-    return send_file(buf, mimetype="image/png")
+    url = "https://qr-contact-i48h.onrender.com/contact/1"   # Render URL
+    qr = qrcode.make(url)
+    qr_path = "static/qr.png"
+    qr.save(qr_path)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    return send_file(qr_path, mimetype="image/png")
+
+
