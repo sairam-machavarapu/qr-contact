@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Contact QR</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .qr-container img {
+            width: 260px;
+            height: 260px;
+            border-radius: 12px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .save-btn {
+            margin-top: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #0d6efd;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="title">Scan to Save Contact</div>
+
+        <div class="qr-container">
+            <img src="/static/qr.png" alt="QR Code">
+        </div>
+
+        <p class="note">Scan this QR to quickly save the contact on your mobile.</p>
+
+        <button class="save-btn" onclick="window.location.href='/download_vcf/1'">
+            Save Contact
+        </button>
+    </div>
+
+</body>
+</html>
