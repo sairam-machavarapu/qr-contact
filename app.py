@@ -63,6 +63,12 @@ def generate_qr():
     qr_io.seek(0)
     return send_file(qr_io, mimetype="image/png")
 
+@app.route("/qr")
+def qr_page():
+    return render_template("qr.html")
+
+
+
 
 
 
